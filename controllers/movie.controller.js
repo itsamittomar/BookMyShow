@@ -1,7 +1,7 @@
   
 const { request, response } = require("express");
 const validation = require('express-validator/check');
-const userbiz = require('../biz/user.biz');
+const moviebiz = require('../biz/movie.biz');
 const usermodel = require("../models/user.model");
 
 console.log("Inside User controller");
@@ -27,8 +27,8 @@ class MovieControl {
                 throw err
             }
             const id = request.body.id;
-            const UserBiz = new userbiz();
-            const result = await UserBiz.getUserData(id)
+            const MovieBiz = new moviebiz();
+            const result = await MovieBiz.getMovieData(id)
             console.log(result)
             return response.json(result,{message:"Movie Fetched Successfully!!"})
 
@@ -37,14 +37,14 @@ class MovieControl {
         .post(async (request, response, next)=>{
             try{
                 const reqBody = request.body;
-                const UserBiz = new userbiz()
-                const result = await UserBiz.createUser(reqBody)
+                const MovieBiz = new moviebiz();
+            const result = await MovieBiz.createMovieRecord(reqBody)
                 response.json({message: result},"Movie Added Successfully!!")
             }
             catch(err){
                 const error = new Error("Not able to add movie details")
                 error.message = "Not able to Add Movie",
-                error.statusCode=422.
+                error.statusCode=422
                 throw error
                 //response.json({message:"Facing Issue"})
             }

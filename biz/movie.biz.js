@@ -14,7 +14,7 @@ class Movieobject {
         })
     }
 
-    async createUser(userData){
+    async createMovieRecord(userData){
         return new Promise(async (resolve,reject)=>{
             try{
                 const result = await movieobject.create(userData);
