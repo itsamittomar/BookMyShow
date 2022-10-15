@@ -1,8 +1,7 @@
-const e = require("express");
+  
 const { request, response } = require("express");
 const validation = require('express-validator/check');
 const userbiz = require('../biz/user.biz');
-const usermodel = require('../BookMyShow/models/user.model');
 const usermodel = require("../models/user.model");
 
 console.log("Inside User controller");
