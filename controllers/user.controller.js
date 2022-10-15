@@ -2,7 +2,8 @@ const e = require("express");
 const { request, response } = require("express");
 const validation = require('express-validator/check');
 const userbiz = require('../biz/user.biz');
-const usermodel = require('../BookMyShow/models/user.model')
+const usermodel = require('../BookMyShow/models/user.model');
+const usermodel = require("../models/user.model");
 
 console.log("Inside User controller");
 
@@ -60,8 +61,6 @@ class UserControl {
                     error.statusCode=422;
                     throw error;
                 }
-                const UserBiz = new userbiz()
-                const result = await UserBiz.findEmployeeId(request.body.id);
                 usermodel.findByPk(request.body.id)
                 .then(result =>{
                     result.name= request.body.name,
@@ -89,3 +88,5 @@ class UserControl {
         })
     }
 }
+
+module.exports=UserControl;
